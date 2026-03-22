@@ -1,0 +1,95 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial;
+background: #f4f1ea;
+}
+
+.container {
+width: 85%;
+max-width: 1100px;
+margin: 30px auto;
+background: white;
+box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+.header {
+background: #2a9d8f;
+color: white;
+padding: 30px;
+}
+
+.tabs {
+display: flex;
+background: #264653;
+}
+
+.tabs label {
+padding: 15px 25px;
+color: white;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.tabs label:hover {
+background: #2a9d8f;
+}
+
+
+input[type="radio"] {
+display: none;
+}
+
+
+.content {
+padding: 30px;
+}
+
+.panel {
+display: none;
+}
+
+.imageContainer {
+text-align: center;
+margin: 20px 0;
+}
+
+.imageContainer img {
+width: 400px;
+max-width: 100%;
+border-radius: 8px;
+}
+
+
+
+#tab1:checked ~ .content .panel1 {
+display: block;
+}
+
+#tab2:checked ~ .content .panel2 {
+display: block;
+}
+
+#tab3:checked ~ .content .panel3 {
+display: block;
+}
+
+
+
+#tab1:checked ~ .tabs label[for="tab1"],
+#tab2:checked ~ .tabs label[for="tab2"],
+#tab3:checked ~ .tabs label[for="tab3"] {
+background: #2a9d8f;
+}
+
+
+.footer {
+background: #264653;
+color: white;
+text-align: center;
+padding: 15px;
+}
