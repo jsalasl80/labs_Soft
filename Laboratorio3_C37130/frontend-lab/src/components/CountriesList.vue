@@ -29,17 +29,12 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "CountriesList",
   data() {
     return {
-      countries: [
-        { name: "Costa Rica", continent: "América", language: "Español" },
-        { name: "Japón", continent: "Asia", language: "Japonés" },
-        { name: "Corea del Sur", continent: "Asia", language: "Coreano" },
-        { name: "Italia", continent: "Europa", language: "Italiano" },
-        { name: "Alemania", continent: "Europa", language: "Alemán" },
-      ],
+      countries: [],
     };
   },
   methods: {
@@ -47,6 +42,14 @@ export default {
       this.countries.splice(index, 1);
     },
   },
+    getCountries() {
+      axios.get("https://localhost:7019/api/country").then((response) => {
+        this.countries = response.data;
+      });
+    },
+    created() {
+      this.getCountries();
+    },
 };
 </script>
 
