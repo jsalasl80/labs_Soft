@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(country, index) of countries" :key="index">
+        <tr v-for="(country, index) in countries" :key="index">
           <td>{{ country.name }}</td>
           <td>{{ country.continent }}</td>
           <td>{{ country.language }}</td>
@@ -30,6 +30,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   name: "CountriesList",
   data() {
@@ -41,15 +42,15 @@ export default {
     deleteCountry(index) {
       this.countries.splice(index, 1);
     },
-  },
     getCountries() {
-      axios.get("https://localhost:7019/api/country").then((response) => {
+      axios.get("https://localhost:7125/api/country").then((response) => {
         this.countries = response.data;
       });
     },
-    created() {
-      this.getCountries();
-    },
+  },
+  created() {
+    this.getCountries();
+  },
 };
 </script>
 
