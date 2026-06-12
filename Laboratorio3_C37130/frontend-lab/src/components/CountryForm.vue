@@ -50,6 +50,22 @@
           </button>
         </div>
       </form>
+
+      <div
+        v-if="successMessage"
+        id="successMessage"
+        class="alert alert-success mt-3"
+      >
+        {{ successMessage }}
+      </div>
+
+      <div
+        v-if="errorMessage"
+        id="errorMessage"
+        class="alert alert-danger mt-3"
+      >
+        {{ errorMessage }}
+      </div>
     </div>
   </div>
 </template>
@@ -66,6 +82,8 @@ export default {
         Continent: "",
         Language: "",
       },
+      successMessage: "",
+      errorMessage: "",
     };
   },
   methods: {
@@ -73,17 +91,26 @@ export default {
       console.log("Datos a guardar:", this.formData);
 
       axios
-        .post("https://localhost:7125/api/Country", {
+        .post("http://localhost:5296/api/country", {
           Name: this.formData.Name,
           Continent: this.formData.Continent,
           Language: this.formData.Language,
         })
-        .then(function (response) {
+        .then((response) => {
           console.log(response);
-          window.location.href = "/";
+
+          this.successMessage = "País guardado exitosamente.";
+          this.errorMessage = "";
+
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1500);
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
+
+          this.errorMessage = "Error al guardar el país.";
+          this.successMessage = "";
         });
     },
   },
