@@ -53,7 +53,7 @@ export default {
       this.countries.splice(index, 1);
     },
     getCountries() {
-      axios.get("https://localhost:7125/api/country").then((response) => {
+      axios.get("http://localhost:5296/api/country").then((response) => {
         this.countries = response.data;
       });
     },
